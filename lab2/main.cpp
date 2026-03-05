@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Student.h"
+#include "Teacher.h"
 
 using namespace std;
 
@@ -10,6 +11,14 @@ int main()
 
   s1.showInfo();
   s2.showInfo();
+
+  Teacher t1("Albert", "Faculty of foreign languages", 20);
+  Teacher t2("Anastasia");
+  Teacher t3;
+
+  t1.showInfo();
+  t2.showInfo();
+  t3.showInfo();
 
   return 0;
 }
