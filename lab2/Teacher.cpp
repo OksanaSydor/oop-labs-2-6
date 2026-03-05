@@ -3,9 +3,13 @@
 
 using namespace std;
 
-Teacher::Teacher()
+Teacher::Teacher(string name, string department, int experienceYears) : name(name), department(department), experienceYears(experienceYears)
 {
-  cout << "Teacher created" << endl;
+  this->name = name;
+  this->department = department;
+  this->experienceYears = experienceYears;
+
+  cout << "Teacher created via parameters" << endl;
 }
 
 Teacher::~Teacher()

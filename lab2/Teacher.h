@@ -12,7 +12,7 @@ private:
   int experienceYears;
 
 public:
-  Teacher();
+  Teacher(string name = "Unknown", string department = "Unknown", int experienceYears = 0);
   ~Teacher();
 
   void showInfo();
