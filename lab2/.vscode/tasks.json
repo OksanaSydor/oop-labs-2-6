@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Run C++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "main.cpp",
+                "Student.cpp",
+                "-g",
+                "-o",
+                "main.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Build all C++ files and create main.exe"
+        },
+        {
+            "label": "Run Executable",
+            "type": "shell",
+            "command": ".\\main.exe",
+            "dependsOn": "Build and Run C++",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
