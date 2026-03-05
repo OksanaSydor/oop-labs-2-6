@@ -6,6 +6,11 @@ using namespace std;
 
 class Teacher
 {
+private:
+  string name;
+  string department;
+  int experienceYears;
+
 public:
   Teacher();
   ~Teacher();
