@@ -8,9 +8,8 @@ Student::Student()
   cout << "Student created" << endl;
 }
 
-Student::Student(string name, int age, string faculty)
+Student::Student(string name, int age, string faculty) : Student(name)
 {
-  this->name = name;
   this->age = age;
   this->faculty = faculty;
 
