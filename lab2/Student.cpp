@@ -17,6 +17,15 @@ Student::Student(string name, int age, string faculty)
   cout << "Student created via parameters" << endl;
 }
 
+Student::Student(string name)
+{
+  this->name = name;
+  this->age = 0;
+  this->faculty = "Unknown";
+
+  cout << "Student created via parameter \"name\"" << endl;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;

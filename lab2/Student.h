@@ -14,6 +14,7 @@ private:
 public:
   Student();
   Student(string name, int age, string faculty);
+  Student(string name);
   ~Student();
 
   void showInfo();
