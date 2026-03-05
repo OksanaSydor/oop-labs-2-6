@@ -3,14 +3,19 @@
 
 using namespace std;
 
-Student::Student(){
+Student::Student()
+{
   cout << "Student created" << endl;
 }
 
-Student::~Student(){
-  cout<< "Student destroyed"<< endl;
+Student::~Student()
+{
+  cout << "Student destroyed" << endl;
 }
 
-void Student::showInfo(){
-  cout << "Student info" << endl;
+void Student::showInfo()
+{
+  cout << "Name: " << name << endl;
+  cout << "Age: " << age << endl;
+  cout << "Faculty: " << faculty << endl;
 }
