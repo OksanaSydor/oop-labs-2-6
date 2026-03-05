@@ -15,5 +15,8 @@ Course::~Course()
 
 void Course::showInfo()
 {
-  cout << "Course info" << endl;
+  cout << "Name:" << name << endl;
+  cout << "Code:" << code << endl;
+  cout << "Credits amount:" << credits << endl;
+  cout << "Hours amount:" << hours << endl;
 }
