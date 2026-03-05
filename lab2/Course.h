@@ -6,6 +6,12 @@ using namespace std;
 
 class Course
 {
+private:
+  string name;
+  string code;
+  int credits;
+  int hours;
+
 public:
   Course();
   ~Course();
