@@ -8,6 +8,15 @@ Student::Student()
   cout << "Student created" << endl;
 }
 
+Student::Student(string name, int age, string faculty)
+{
+  this->name = name;
+  this->age = age;
+  this->faculty = faculty;
+
+  cout << "Student created via parameters" << endl;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;

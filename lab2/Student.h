@@ -13,6 +13,7 @@ private:
 
 public:
   Student();
+  Student(string name, int age, string faculty);
   ~Student();
 
   void showInfo();
