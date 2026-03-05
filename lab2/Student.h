@@ -15,6 +15,7 @@ public:
   Student();
   Student(string name, int age, string faculty);
   Student(string name);
+  Student(string name = "Unknown", int age = 0, string faculty = "Unknown");
   ~Student();
 
   void showInfo();
