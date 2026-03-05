@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Student.h"
 #include "Teacher.h"
+#include "Course.h"
 
 using namespace std;
 
@@ -19,6 +20,10 @@ int main()
   t1.showInfo();
   t2.showInfo();
   t3.showInfo();
+
+  Course c1("Software Engeneering");
+
+  c1.showInfo();
 
   return 0;
 }
