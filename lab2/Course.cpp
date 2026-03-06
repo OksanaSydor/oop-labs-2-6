@@ -5,10 +5,6 @@ using namespace std;
 
 Course::Course(string name, string code, int credits, int hours) : name(name), code(code), credits(credits), hours(hours)
 {
-  this->name = name;
-  this->code = code;
-  this->credits = credits;
-  this->hours = hours;
 }
 
 Course::~Course()

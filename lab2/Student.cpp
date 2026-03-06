@@ -5,10 +5,6 @@ using namespace std;
 
 Student::Student(string name, int age, string faculty) : name(name), age(age), faculty(faculty)
 {
-  this->name = name;
-  this->age = age;
-  this->faculty = faculty;
-
   cout << "Student created via parameters" << endl;
 }
 
