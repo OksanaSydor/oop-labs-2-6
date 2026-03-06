@@ -14,7 +14,6 @@ private:
 
 public:
   Course(string name = "Unknown", string code = "Unknown", int credits = 0, int hours = 0);
-  Course();
   ~Course();
 
   void showInfo();
