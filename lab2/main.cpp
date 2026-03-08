@@ -25,5 +25,10 @@ int main()
 
   c1.showInfo();
 
+  cout << "Copy s2 from s1" << endl;
+  Student s2(s1);
+  s1.showInfo();
+  s2.showInfo();
+
   return 0;
 }

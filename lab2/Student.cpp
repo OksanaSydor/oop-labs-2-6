@@ -8,6 +8,14 @@ Student::Student(string name, int age, string faculty) : name(name), age(age), f
   cout << "Student created via parameters" << endl;
 }
 
+Student::Student(const Student &other)
+{
+  this->name = other.name;
+  this->age = other.age;
+  this->faculty = other.faculty;
+  cout << "Copy constructor was called" << endl;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;
