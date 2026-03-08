@@ -10,6 +10,8 @@ private:
   string name;
   int age;
   string faculty;
+  int id;
+  static int amount;
 
 public:
   Student(string name = "Unknown", int age = 0, string faculty = "Unknown");
@@ -18,6 +20,11 @@ public:
   ~Student();
 
   void showInfo();
+  int GetId();
+  static int GetAmount()
+  {
+    return amount;
+  }
 };
 
 #endif

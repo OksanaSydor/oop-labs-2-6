@@ -32,14 +32,21 @@ int main()
   c1.showInfo();
 
   cout << "Copy s2 from s1" << endl;
-  Student s2(s1);
+  Student s3 = s1;
   s1.showInfo();
   s2.showInfo();
 
-  Student s3 = createStudent();
+  Student s4 = createStudent();
 
   cout << "Student created by move constructor: " << endl;
   s3.showInfo();
+
+  cout << s1.GetId() << endl;
+  cout << s2.GetId() << endl;
+  cout << s3.GetId() << endl;
+  cout << s4.GetId() << endl;
+
+  cout << "Amount of students: " << Student::GetAmount() << endl;
 
   return 0;
 }
