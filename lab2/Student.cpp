@@ -27,7 +27,7 @@ Student::Student(Student &&other) noexcept : name(move(other.name)), age(other.a
   cout << "Move constructor was called" << endl;
 }
 
-int Student::GetId()
+int Student::GetId() const
 {
   return id;
 }
@@ -42,4 +42,37 @@ void Student::showInfo()
   cout << "Name: " << name << endl;
   cout << "Age: " << age << endl;
   cout << "Faculty: " << faculty << endl;
+}
+
+void Student::operator++()
+{
+  age++;
+}
+
+bool Student::operator==(const Student &other)
+{
+  return name == other.name && faculty == other.faculty;
+}
+
+ostream &operator<<(ostream &os, const Student &student)
+{
+  os << "Name: " << student.name << endl;
+  os << "Age: " << student.age << endl;
+  os << "Faculty: " << student.faculty << endl;
+
+  return os;
+}
+
+istream &operator>>(istream &is, Student &student)
+{
+  cout << "Enter name: ";
+  is >> student.name;
+
+  cout << "Enter age: ";
+  is >> student.age;
+
+  cout << "Enter faculty: ";
+  is >> student.faculty;
+
+  return is;
 }

@@ -48,5 +48,22 @@ int main()
 
   cout << "Amount of students: " << Student::GetAmount() << endl;
 
+  ++s1;
+  s1.showInfo();
+
+  if (s1 == s2)
+  {
+    cout << "Students s1 and s2 are the same" << endl;
+  }
+
+  if (s1 == s3)
+  {
+    cout << "Students s1 and s3 are the same" << endl;
+  }
+
+  Student s5;
+  cin >> s5;
+  cout << s5;
+
   return 0;
 }

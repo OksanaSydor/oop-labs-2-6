@@ -18,13 +18,17 @@ public:
   Student(const Student &other);
   Student(Student &&other) noexcept;
   ~Student();
+  void operator++();
+  bool operator==(const Student &other);
 
   void showInfo();
-  int GetId();
+  int GetId() const;
   static int GetAmount()
   {
     return amount;
   }
+  friend ostream &operator<<(ostream &os, const Student &student);
+  friend istream &operator>>(istream &is, Student &student);
 };
 
 #endif
