@@ -5,6 +5,12 @@
 
 using namespace std;
 
+Student createStudent()
+{
+  Student temp("Max", 20, "Math");
+  return temp;
+}
+
 int main()
 {
   Student s1("Oksana", 18, "Educational and Scientific Institute of Physical, Technical and Computer Sciences");
@@ -29,6 +35,11 @@ int main()
   Student s2(s1);
   s1.showInfo();
   s2.showInfo();
+
+  Student s3 = createStudent();
+
+  cout << "Student created by move constructor: " << endl;
+  s3.showInfo();
 
   return 0;
 }

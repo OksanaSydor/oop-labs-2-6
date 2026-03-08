@@ -14,6 +14,7 @@ private:
 public:
   Student(string name = "Unknown", int age = 0, string faculty = "Unknown");
   Student(const Student &other);
+  Student(Student &&other) noexcept;
   ~Student();
 
   void showInfo();

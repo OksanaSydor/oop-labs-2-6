@@ -16,6 +16,11 @@ Student::Student(const Student &other)
   cout << "Copy constructor was called" << endl;
 }
 
+Student::Student(Student &&other) noexcept : name(move(other.name)), age(other.age), faculty(move(other.faculty))
+{
+  cout << "Move constructor was called" << endl;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;
