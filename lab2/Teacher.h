@@ -2,17 +2,18 @@
 #define TEACHER_H
 
 #include <string>
+#include "Person.h"
+
 using namespace std;
 
-class Teacher
+class Teacher : public Person
 {
 private:
-  string name;
   string department;
   int experienceYears;
 
 public:
-  Teacher(string name = "Unknown", string department = "Unknown", int experienceYears = 0);
+  Teacher(string name = "Unknown", int age = 0, string department = "Unknown", int experienceYears = 0);
   ~Teacher();
 
   void showInfo();

@@ -2,13 +2,14 @@
 #define STUDENT_H
 
 #include <string>
+#include <iostream>
+#include "Person.h"
+
 using namespace std;
 
-class Student
+class Student : public Person
 {
 private:
-  string name;
-  int age;
   string faculty;
   int id;
   static int amount;
@@ -18,6 +19,7 @@ public:
   Student(const Student &other);
   Student(Student &&other) noexcept;
   ~Student();
+
   void operator++();
   bool operator==(const Student &other);
 

@@ -4,6 +4,7 @@
 #include "Course.h"
 #include "Bachelor.h"
 #include "Master.h"
+#include "Person.h"
 
 using namespace std;
 
@@ -21,8 +22,8 @@ int main()
   s1.showInfo();
   s2.showInfo();
 
-  Teacher t1("Albert", "Faculty of foreign languages", 20);
-  Teacher t2("Anastasia");
+  Teacher t1("Albert", 50, "Faculty of foreign languages", 20);
+  Teacher t2("Anastasia", 30);
   Teacher t3;
 
   t1.showInfo();
@@ -88,6 +89,9 @@ int main()
   }
 
   cout << m.GetBachelorSpec() << endl;
+
+  Person p("Tom", 40);
+  p.showInfo();
 
   return 0;
 }

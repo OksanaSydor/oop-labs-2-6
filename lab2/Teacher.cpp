@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Teacher::Teacher(string name, string department, int experienceYears) : name(name), department(department), experienceYears(experienceYears)
+Teacher::Teacher(string name, int age, string department, int experienceYears) : Person(name, age), department(department), experienceYears(experienceYears)
 {
   cout << "Teacher created via parameters" << endl;
 }
@@ -15,7 +15,7 @@ Teacher::~Teacher()
 
 void Teacher::showInfo()
 {
-  cout << "Name: " << name << endl;
+  Person::showInfo();
   cout << "Department: " << department << endl;
   cout << "Experience years: " << experienceYears << endl;
 }

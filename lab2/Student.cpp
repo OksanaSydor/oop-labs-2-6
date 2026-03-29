@@ -5,24 +5,22 @@ using namespace std;
 
 int Student::amount = 0;
 
-Student::Student(string name, int age, string faculty) : name(name), age(age), faculty(faculty)
+Student::Student(string name, int age, string faculty) : Person(name, age), faculty(faculty)
 {
   amount++;
   id = amount;
   cout << "Student created via parameters" << endl;
 }
 
-Student::Student(const Student &other)
+Student::Student(const Student &other) : Person(other.GetName(), other.GetAge())
 {
-  this->name = other.name;
-  this->age = other.age;
-  this->faculty = other.faculty;
+  faculty = other.faculty;
   amount++;
   id = amount;
   cout << "Copy constructor was called" << endl;
 }
 
-Student::Student(Student &&other) noexcept : name(move(other.name)), age(other.age), faculty(move(other.faculty)), id(other.id)
+Student::Student(Student &&other) noexcept : Person(other.GetName(), other.GetAge()), faculty(move(other.faculty)), id(other.id)
 {
   cout << "Move constructor was called" << endl;
 }
@@ -39,25 +37,24 @@ Student::~Student()
 
 void Student::showInfo()
 {
-  cout << "Name: " << name << endl;
-  cout << "Age: " << age << endl;
+  Person::showInfo();
   cout << "Faculty: " << faculty << endl;
 }
 
 void Student::operator++()
 {
-  age++;
+  SetAge(GetAge() + 1);
 }
 
 bool Student::operator==(const Student &other)
 {
-  return name == other.name && faculty == other.faculty;
+  return GetName() == other.GetName() && faculty == other.faculty;
 }
 
 ostream &operator<<(ostream &os, const Student &student)
 {
-  os << "Name: " << student.name << endl;
-  os << "Age: " << student.age << endl;
+  os << "Name: " << student.GetName() << endl;
+  os << "Age: " << student.GetAge() << endl;
   os << "Faculty: " << student.faculty << endl;
 
   return os;
@@ -65,11 +62,16 @@ ostream &operator<<(ostream &os, const Student &student)
 
 istream &operator>>(istream &is, Student &student)
 {
+  string name;
+  int age;
+
   cout << "Enter name: ";
-  is >> student.name;
+  is >> name;
+  student.SetName(name);
 
   cout << "Enter age: ";
-  is >> student.age;
+  is >> age;
+  student.SetAge(age);
 
   cout << "Enter faculty: ";
   is >> student.faculty;
