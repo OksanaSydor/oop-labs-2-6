@@ -93,5 +93,14 @@ int main()
   Person p("Tom", 40);
   p.showInfo();
 
+  Bachelor b2 = b;
+  Bachelor b3("Economics");
+  Bachelor b4("Physics");
+
+  b3 = b4;
+  b3.showInfo();
+
+  Master m2 = move(m);
+
   return 0;
 }

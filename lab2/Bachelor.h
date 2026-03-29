@@ -12,6 +12,8 @@ private:
 public:
   Bachelor(bool scholarship = false);
   bool IsOnScholarship();
+  Bachelor(const Bachelor &other);
+  Bachelor &operator=(const Bachelor &other);
   ~Bachelor();
 };
 

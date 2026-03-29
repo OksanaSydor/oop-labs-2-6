@@ -15,6 +15,7 @@ public:
   Master(string bachelorSpec = "Unknown", bool scholarship = false);
   string GetBachelorSpec();
   bool IsOnScholarship();
+  Master(Master &&other) noexcept;
   ~Master();
 };
 

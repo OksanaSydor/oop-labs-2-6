@@ -5,7 +5,7 @@ using namespace std;
 
 int Student::amount = 0;
 
-Student::Student(string name, int age, string faculty) : Person(name, age), faculty(faculty)
+Student::Student(string name, int age, string faculty) : Person(name, age), faculty(faculty), course("Unknown")
 {
   amount++;
   id = amount;
@@ -39,6 +39,9 @@ void Student::showInfo()
 {
   Person::showInfo();
   cout << "Faculty: " << faculty << endl;
+  cout << "Course info: ";
+  course.showInfo();
+  cout << endl;
 }
 
 void Student::operator++()

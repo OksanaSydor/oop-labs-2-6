@@ -18,6 +18,11 @@ string Master::GetBachelorSpec()
   return bachelorSpec;
 }
 
+Master::Master(Master &&other) noexcept : Student(move(other)), bachelorSpec(move(other.bachelorSpec)), scholarship(other.scholarship)
+{
+  cout << "Master move constructor called" << endl;
+}
+
 Master::~Master()
 {
   cout << "Master destroyed" << endl;

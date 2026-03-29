@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "Person.h"
+#include "Course.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ private:
   string faculty;
   int id;
   static int amount;
+  Course course;
 
 public:
   Student(string name = "Unknown", int age = 0, string faculty = "Unknown");
