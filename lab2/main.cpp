@@ -2,6 +2,8 @@
 #include "Student.h"
 #include "Teacher.h"
 #include "Course.h"
+#include "Bachelor.h"
+#include "Master.h"
 
 using namespace std;
 
@@ -64,6 +66,28 @@ int main()
   Student s5;
   cin >> s5;
   cout << s5;
+
+  Bachelor b(false);
+  if (b.IsOnScholarship())
+  {
+    cout << "Bachelor draws scholarship" << endl;
+  }
+  else
+  {
+    cout << "Bachelor doesn`t draw scholarship" << endl;
+  }
+
+  Master m("Math", true);
+  if (m.IsOnScholarship())
+  {
+    cout << "Master draws scholarship" << endl;
+  }
+  else
+  {
+    cout << "Master doesn`t draw scholarship" << endl;
+  }
+
+  cout << m.GetBachelorSpec() << endl;
 
   return 0;
 }
