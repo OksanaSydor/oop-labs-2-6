@@ -12,7 +12,7 @@ Student::Student(string name, int age, string faculty) : Person(name, age), facu
   cout << "Student created via parameters" << endl;
 }
 
-Student::Student(const Student &other) : Person(other.GetName(), other.GetAge())
+Student::Student(const Student &other) : Person(other.name, other.age)
 {
   faculty = other.faculty;
   amount++;
@@ -20,7 +20,7 @@ Student::Student(const Student &other) : Person(other.GetName(), other.GetAge())
   cout << "Copy constructor was called" << endl;
 }
 
-Student::Student(Student &&other) noexcept : Person(other.GetName(), other.GetAge()), faculty(move(other.faculty)), id(other.id)
+Student::Student(Student &&other) noexcept : Person(other.name, other.age), faculty(move(other.faculty)), id(other.id)
 {
   cout << "Move constructor was called" << endl;
 }
@@ -46,18 +46,18 @@ void Student::showInfo()
 
 void Student::operator++()
 {
-  SetAge(GetAge() + 1);
+  age++;
 }
 
 bool Student::operator==(const Student &other)
 {
-  return GetName() == other.GetName() && faculty == other.faculty;
+  return name == other.name && faculty == other.faculty;
 }
 
 ostream &operator<<(ostream &os, const Student &student)
 {
-  os << "Name: " << student.GetName() << endl;
-  os << "Age: " << student.GetAge() << endl;
+  os << "Name: " << student.name << endl;
+  os << "Age: " << student.age << endl;
   os << "Faculty: " << student.faculty << endl;
 
   return os;
@@ -65,16 +65,12 @@ ostream &operator<<(ostream &os, const Student &student)
 
 istream &operator>>(istream &is, Student &student)
 {
-  string name;
-  int age;
 
   cout << "Enter name: ";
-  is >> name;
-  student.SetName(name);
+  is >> student.name;
 
   cout << "Enter age: ";
-  is >> age;
-  student.SetAge(age);
+  is >> student.age;
 
   cout << "Enter faculty: ";
   is >> student.faculty;

@@ -10,7 +10,7 @@ using namespace std;
 
 class Student : public Person
 {
-private:
+protected:
   string faculty;
   int id;
   static int amount;
