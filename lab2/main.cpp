@@ -14,6 +14,11 @@ Student createStudent()
   return temp;
 }
 
+void staticBindingProblem(Person *person)
+{
+  person->showInfo();
+}
+
 int main()
 {
   Student s1("Oksana", 18, "Educational and Scientific Institute of Physical, Technical and Computer Sciences");
@@ -101,6 +106,28 @@ int main()
   b3.showInfo();
 
   Master m2 = move(m);
+
+  cout << "--------lab 5--------" << endl;
+
+  Student st("Ira", 21, "IT");
+  Teacher tr("Anna", 42, "Computer Science", 14);
+
+  Person *pst = &st;
+  Person *ptr = &tr;
+
+  cout << "Called showInfo() through * type Person to object type Student: " << endl;
+  pst->showInfo();
+
+  cout << "Called showInfo() through * type Person to object type Teacher: " << endl;
+  ptr->showInfo();
+
+  cout << "------------------------------" << endl;
+
+  cout << "Called showInfo() through object type Student: " << endl;
+  st.showInfo();
+
+  cout << "Called showInfo() through object type Teacher: " << endl;
+  tr.showInfo();
 
   return 0;
 }
