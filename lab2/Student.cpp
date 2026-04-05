@@ -5,22 +5,21 @@ using namespace std;
 
 int Student::amount = 0;
 
-Student::Student(string name, int age, string faculty) : Person(name, age), faculty(faculty), course("Unknown")
+Student::Student(string name, int age, string faculty) : name(name), age(age), faculty(faculty), course("Unknown")
 {
   amount++;
   id = amount;
   cout << "Student created via parameters" << endl;
 }
 
-Student::Student(const Student &other) : Person(other.name, other.age)
+Student::Student(const Student &other) : name(other.name), age(other.age), faculty(other.faculty), course(other.course)
 {
-  faculty = other.faculty;
   amount++;
   id = amount;
   cout << "Copy constructor was called" << endl;
 }
 
-Student::Student(Student &&other) noexcept : Person(other.name, other.age), faculty(move(other.faculty)), id(other.id)
+Student::Student(Student &&other) noexcept : name(move(other.name)), age(other.age), faculty(move(other.faculty)), id(other.id), course(other.course)
 {
   cout << "Move constructor was called" << endl;
 }
@@ -30,6 +29,26 @@ int Student::GetId() const
   return id;
 }
 
+string Student::GetName() const
+{
+  return name;
+}
+
+int Student::GetAge() const
+{
+  return age;
+}
+
+void Student::SetName(string name)
+{
+  this->name = name;
+}
+
+void Student::SetAge(int age)
+{
+  this->age = age;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;
@@ -37,7 +56,8 @@ Student::~Student()
 
 void Student::showInfo()
 {
-  Person::showInfo();
+  cout << "Name: " << name << endl;
+  cout << "Age: " << age << endl;
   cout << "Faculty: " << faculty << endl;
   cout << "Course info: ";
   course.showInfo();

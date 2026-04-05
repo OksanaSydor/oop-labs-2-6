@@ -8,20 +8,14 @@ using namespace std;
 
 class Person
 {
-protected:
-  string name;
-  int age;
-
 public:
-  Person(string name = "Unknown", int age = 0);
+  virtual string GetName() const = 0;
+  virtual int GetAge() const = 0;
+  virtual void SetName(string name) = 0;
+  virtual void SetAge(int age) = 0;
+  virtual void showInfo() = 0;
 
-  string GetName() const;
-  int GetAge() const;
-  void SetName(string name);
-  void SetAge(int age);
-  void showInfo();
-
-  ~Person();
+  virtual ~Person();
 };
 
 #endif

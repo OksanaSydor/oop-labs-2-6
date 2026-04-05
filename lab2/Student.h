@@ -11,6 +11,8 @@ using namespace std;
 class Student : public Person
 {
 protected:
+  string name;
+  int age;
   string faculty;
   int id;
   static int amount;
@@ -25,7 +27,12 @@ public:
   void operator++();
   bool operator==(const Student &other);
 
-  virtual void showInfo();
+  string GetName() const override;
+  int GetAge() const override;
+  void SetName(string name) override;
+  void SetAge(int age) override;
+
+  void showInfo() override;
   virtual void study() const;
 
   int GetId() const;

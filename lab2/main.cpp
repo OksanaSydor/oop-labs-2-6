@@ -2,6 +2,7 @@
 #include "Student.h"
 #include "Teacher.h"
 #include "Course.h"
+#include "OnlineCourse.h"
 #include "Bachelor.h"
 #include "Master.h"
 #include "Person.h"
@@ -95,9 +96,6 @@ int main()
 
   cout << m.GetBachelorSpec() << endl;
 
-  Person p("Tom", 40);
-  p.showInfo();
-
   Bachelor b2 = b;
   Bachelor b3("Economics");
   Bachelor b4("Physics");
@@ -108,26 +106,18 @@ int main()
   Master m2 = move(m);
 
   cout << "--------lab 5--------" << endl;
+  cout << "\n------Static Method Binding-----" << endl;
 
-  Student st("Ira", 21, "IT");
-  Teacher tr("Anna", 42, "Computer Science", 14);
+  OnlineCourse oc("IT");
+  Course *poc = &oc;
 
-  Person *pst = &st;
-  Person *ptr = &tr;
-
-  cout << "Called showInfo() through * type Person to object type Student: " << endl;
-  pst->showInfo();
-
-  cout << "Called showInfo() through * type Person to object type Teacher: " << endl;
-  ptr->showInfo();
+  cout << "Called showInfo() through * type Course to object type OnlineCourse: " << endl;
+  poc->showInfo();
 
   cout << "------------------------------" << endl;
 
-  cout << "Called showInfo() through object type Student: " << endl;
-  st.showInfo();
-
-  cout << "Called showInfo() through object type Teacher: " << endl;
-  tr.showInfo();
+  cout << "Called showInfo() through object type OnlineCourse: " << endl;
+  oc.showInfo();
 
   cout << "-----Demonstration Run-time polymorphism through Base class pointer-----" << endl;
 
@@ -153,6 +143,24 @@ int main()
 
   m1Ref.showInfo();
   m1Ref.study();
+
+  cout << "-----Interface demonstration-----" << endl;
+  Student st("Ira", 21, "IT");
+  Teacher tr("Anna", 42, "Computer Science", 14);
+
+  Person *pst = &st;
+  Person *ptr = &tr;
+  Person *ppb1 = &b1;
+  Person *ppm1 = &m1;
+
+  pst->showInfo();
+  cout << endl;
+  ptr->showInfo();
+  cout << endl;
+  ppb1->showInfo();
+  cout << endl;
+  ppm1->showInfo();
+  cout << endl;
 
   return 0;
 }
