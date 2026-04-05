@@ -12,9 +12,13 @@ private:
 public:
   Bachelor(bool scholarship = false);
   bool IsOnScholarship();
+
+  void showInfo() override;
+  void study() const override;
+
   Bachelor(const Bachelor &other);
   Bachelor &operator=(const Bachelor &other);
-  ~Bachelor();
+  virtual ~Bachelor();
 };
 
 #endif

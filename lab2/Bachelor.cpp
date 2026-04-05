@@ -18,6 +18,17 @@ Bachelor::Bachelor(const Bachelor &other) : Student(other), scholarship(other.sc
   cout << "Bachelor copy constructor called" << endl;
 }
 
+void Bachelor::showInfo()
+{
+  Student::showInfo();
+  cout << "Scholarship: " << (scholarship ? "Yes" : "No") << endl;
+}
+
+void Bachelor::study() const
+{
+  cout << "Bachelor studies." << endl;
+}
+
 Bachelor &Bachelor ::operator=(const Bachelor &other)
 {
   if (this != &other)

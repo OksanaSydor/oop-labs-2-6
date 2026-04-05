@@ -18,6 +18,18 @@ string Master::GetBachelorSpec()
   return bachelorSpec;
 }
 
+void Master::showInfo()
+{
+  Student::showInfo();
+  cout << "Bachelor specialty: " << bachelorSpec << endl;
+  cout << "Scholarship: " << (scholarship ? "Yes" : "No") << endl;
+}
+
+void Master::study() const
+{
+  cout << "Master studies." << endl;
+}
+
 Master::Master(Master &&other) noexcept : Student(move(other)), bachelorSpec(move(other.bachelorSpec)), scholarship(other.scholarship)
 {
   cout << "Master move constructor called" << endl;

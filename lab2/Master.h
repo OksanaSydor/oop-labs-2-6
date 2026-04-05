@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-class Master : public Student
+class Master final : public Student
 {
 private:
   string bachelorSpec;
@@ -15,8 +15,12 @@ public:
   Master(string bachelorSpec = "Unknown", bool scholarship = false);
   string GetBachelorSpec();
   bool IsOnScholarship();
+
+  void showInfo() override;
+  void study() const override final;
+
   Master(Master &&other) noexcept;
-  ~Master();
+  virtual ~Master();
 };
 
 #endif

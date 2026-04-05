@@ -44,6 +44,11 @@ void Student::showInfo()
   cout << endl;
 }
 
+void Student::study() const
+{
+  cout << "Student studies." << endl;
+}
+
 void Student::operator++()
 {
   age++;

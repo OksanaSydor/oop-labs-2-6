@@ -20,12 +20,14 @@ public:
   Student(string name = "Unknown", int age = 0, string faculty = "Unknown");
   Student(const Student &other);
   Student(Student &&other) noexcept;
-  ~Student();
+  virtual ~Student();
 
   void operator++();
   bool operator==(const Student &other);
 
-  void showInfo();
+  virtual void showInfo();
+  virtual void study() const;
+
   int GetId() const;
   static int GetAmount()
   {

@@ -129,5 +129,30 @@ int main()
   cout << "Called showInfo() through object type Teacher: " << endl;
   tr.showInfo();
 
+  cout << "-----Demonstration Run-time polymorphism through Base class pointer-----" << endl;
+
+  Bachelor b1(true);
+  Master m1("Computer Science", true);
+
+  Student *pb1 = &b1;
+  Student *pm1 = &m1;
+
+  pb1->showInfo();
+  pb1->study();
+
+  pm1->showInfo();
+  pm1->study();
+
+  cout << "-----Demonstration Run-time polymorphism through Base class reference-----" << endl;
+
+  Student &b1Ref = b1;
+  Student &m1Ref = m1;
+
+  b1Ref.showInfo();
+  b1Ref.study();
+
+  m1Ref.showInfo();
+  m1Ref.study();
+
   return 0;
 }
