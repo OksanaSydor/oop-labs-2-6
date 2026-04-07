@@ -6,7 +6,7 @@ using namespace std;
 
 class Course
 {
-private:
+protected:
   string name;
   string code;
   int credits;

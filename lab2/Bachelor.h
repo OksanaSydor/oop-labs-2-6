@@ -10,9 +10,11 @@ private:
   bool scholarship;
 
 public:
+  Bachelor(bool scholarship, string name, int age);
   Bachelor(bool scholarship = false);
   bool IsOnScholarship();
 
+  void isAdult() override;
   void showInfo() override;
   void study() const override;
 

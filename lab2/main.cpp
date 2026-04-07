@@ -106,6 +106,7 @@ int main()
   Master m2 = move(m);
 
   cout << "--------lab 5--------" << endl;
+
   cout << "\n------Static Method Binding-----" << endl;
 
   OnlineCourse oc("IT");
@@ -132,6 +133,20 @@ int main()
 
   pm1->showInfo();
   pm1->study();
+
+  cout << "----------------------------" << endl;
+
+  Bachelor astud(true, "Kate", 20);
+  Bachelor ustud(true, "Maria", 17);
+  Master mast("Math");
+
+  Student *pastud = &astud;
+  Student *pustud = &ustud;
+  Student *pmast = &mast;
+
+  pastud->isAdult();
+  pustud->isAdult();
+  pmast->isAdult();
 
   cout << "-----Demonstration Run-time polymorphism through Base class reference-----" << endl;
 

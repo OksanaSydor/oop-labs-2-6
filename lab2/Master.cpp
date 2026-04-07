@@ -18,6 +18,11 @@ string Master::GetBachelorSpec()
   return bachelorSpec;
 }
 
+void Master::isAdult()
+{
+  cout << "Master is adult." << endl;
+}
+
 void Master::showInfo()
 {
   Student::showInfo();

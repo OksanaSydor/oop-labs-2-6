@@ -16,6 +16,7 @@ public:
   string GetBachelorSpec();
   bool IsOnScholarship();
 
+  void isAdult() override;
   void showInfo() override;
   void study() const override final;
 

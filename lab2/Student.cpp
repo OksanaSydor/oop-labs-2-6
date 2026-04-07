@@ -69,6 +69,18 @@ void Student::study() const
   cout << "Student studies." << endl;
 }
 
+void Student::isAdult()
+{
+  if (age < 18)
+  {
+    cout << "Student is underage." << endl;
+  }
+  else
+  {
+    cout << "Student is adult." << endl;
+  }
+}
+
 void Student::operator++()
 {
   age++;

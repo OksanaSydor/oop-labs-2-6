@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Bachelor::Bachelor(bool scholarship, string name, int age) : Student(name, age, "Unknown"), scholarship(scholarship)
+{
+  cout << "Bachelor constructor called." << endl;
+}
+
 Bachelor::Bachelor(bool scholarship) : Student("Unknown", 0, "Unknown"), scholarship(scholarship)
 {
   cout << "Bachelor constructor called" << endl;
@@ -16,6 +21,18 @@ bool Bachelor::IsOnScholarship()
 Bachelor::Bachelor(const Bachelor &other) : Student(other), scholarship(other.scholarship)
 {
   cout << "Bachelor copy constructor called" << endl;
+}
+
+void Bachelor::isAdult()
+{
+  if (age < 18)
+  {
+    cout << "Bachelor is underage." << endl;
+  }
+  else
+  {
+    cout << "Bachelor is adult." << endl;
+  }
 }
 
 void Bachelor::showInfo()

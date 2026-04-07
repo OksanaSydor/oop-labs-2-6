@@ -34,6 +34,7 @@ public:
 
   void showInfo() override;
   virtual void study() const;
+  virtual void isAdult();
 
   int GetId() const;
   static int GetAmount()
