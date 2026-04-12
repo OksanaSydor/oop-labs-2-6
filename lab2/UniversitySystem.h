@@ -19,6 +19,11 @@ private:
   vector<unique_ptr<Course>> courses;
   vector<unique_ptr<Lesson>> schedule;
 
+  const string adminPassword = "8888";
+
+  void adminMenu();
+  void userMenu();
+  
 public:
   void launch();
 };
