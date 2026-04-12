@@ -14,9 +14,14 @@ protected:
 
 public:
   Course(string name = "Unknown", string code = "Unknown", int credits = 0, int hours = 0);
-  ~Course();
+  virtual ~Course();
 
-  void showInfo();
+  string GetName() const;
+  string GetCode() const;
+  int GetCredits() const;
+  int GetHours() const;
+
+  virtual void showInfo();
 };
 
 #endif

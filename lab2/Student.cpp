@@ -49,6 +49,11 @@ void Student::SetAge(int age)
   this->age = age;
 }
 
+string Student::GetFaculty() const
+{
+  return faculty;
+}
+
 Student::~Student()
 {
   cout << "Student destroyed" << endl;

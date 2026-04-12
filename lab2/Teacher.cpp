@@ -33,6 +33,16 @@ void Teacher::SetAge(int age)
   this->age = age;
 }
 
+string Teacher::GetDepartment() const
+{
+  return department;
+}
+
+int Teacher::GetExperienceYears() const
+{
+  return experienceYears;
+}
+
 void Teacher::showInfo()
 {
   cout << "Name: " << name << endl;

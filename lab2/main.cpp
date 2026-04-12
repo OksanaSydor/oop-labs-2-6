@@ -6,6 +6,7 @@
 #include "Bachelor.h"
 #include "Master.h"
 #include "Person.h"
+#include "UniversitySystem.h"
 
 using namespace std;
 
@@ -176,6 +177,11 @@ int main()
   cout << endl;
   ppm1->showInfo();
   cout << endl;
+
+  cout << "-----------Lab 6-----------" << endl;
+
+  UniversitySystem us;
+  us.launch();
 
   return 0;
 }

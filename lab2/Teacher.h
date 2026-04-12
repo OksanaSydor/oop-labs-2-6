@@ -22,6 +22,8 @@ public:
   int GetAge() const override;
   void SetName(string name) override;
   void SetAge(int age) override;
+  string GetDepartment() const;
+  int GetExperienceYears() const;
 
   void showInfo() override;
 };
