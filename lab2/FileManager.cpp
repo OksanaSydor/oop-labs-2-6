@@ -2,99 +2,186 @@
 
 void FileManager::saveStudents(const vector<unique_ptr<Student>> &students)
 {
-  ofstream out("students.txt");
-
-  for (const auto &s : students)
+  try
   {
-    out << s->GetName() << " "
-        << s->GetAge() << " "
-        << s->GetFaculty() << endl;
+    ofstream out("students.txt");
+    if (!out)
+    {
+      throw runtime_error("Can not open file.");
+    }
+    for (const auto &s : students)
+    {
+      out << s->GetName() << " "
+          << s->GetAge() << " "
+          << s->GetFaculty() << endl;
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::loadStudents(vector<unique_ptr<Student>> &students)
 {
-  ifstream in("students.txt");
-
-  string name, faculty;
-  int age;
-
-  while (in >> name >> age >> faculty)
+  try
   {
-    students.push_back(make_unique<Student>(name, age, faculty));
+    ifstream in("students.txt");
+    if (!in)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    string name, faculty;
+    int age;
+
+    while (in >> name >> age >> faculty)
+    {
+      students.push_back(make_unique<Student>(name, age, faculty));
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::saveTeachers(const vector<unique_ptr<Teacher>> &teachers)
 {
-  ofstream out("teachers.txt");
-
-  for (const auto &t : teachers)
+  try
   {
-    out << t->GetName() << " "
-        << t->GetAge() << " "
-        << t->GetDepartment() << " "
-        << t->GetExperienceYears() << endl;
+    ofstream out("teachers.txt");
+    if (!out)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    for (const auto &t : teachers)
+    {
+      out << t->GetName() << " "
+          << t->GetAge() << " "
+          << t->GetDepartment() << " "
+          << t->GetExperienceYears() << endl;
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::loadTeachers(vector<unique_ptr<Teacher>> &teachers)
 {
-  ifstream in("teachers.txt");
-
-  string name, department;
-  int age, experience;
-
-  while (in >> name >> age >> department >> experience)
+  try
   {
-    teachers.push_back(make_unique<Teacher>(name, age, department, experience));
+    ifstream in("teachers.txt");
+    if (!in)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    string name, department;
+    int age, experience;
+
+    while (in >> name >> age >> department >> experience)
+    {
+      teachers.push_back(make_unique<Teacher>(name, age, department, experience));
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::saveCourses(const vector<unique_ptr<Course>> &courses)
 {
-  ofstream out("courses.txt");
-
-  for (const auto &c : courses)
+  try
   {
-    out << c->GetName() << " "
-        << c->GetCode() << " "
-        << c->GetCredits() << " "
-        << c->GetHours() << endl;
+    ofstream out("courses.txt");
+    if (!out)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    for (const auto &c : courses)
+    {
+      out << c->GetName() << " "
+          << c->GetCode() << " "
+          << c->GetCredits() << " "
+          << c->GetHours() << endl;
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::loadCourses(vector<unique_ptr<Course>> &courses)
 {
-  ifstream in("courses.txt");
-
-  string name, code;
-  int credits, hours;
-
-  while (in >> name >> code >> credits >> hours)
+  try
   {
-    courses.push_back(make_unique<Course>(name, code, credits, hours));
+    ifstream in("courses.txt");
+    if (!in)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    string name, code;
+    int credits, hours;
+
+    while (in >> name >> code >> credits >> hours)
+    {
+      courses.push_back(make_unique<Course>(name, code, credits, hours));
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::saveSchedule(const vector<unique_ptr<Lesson>> &schedule)
 {
-  ofstream out("schedule.txt");
-
-  for (const auto &s : schedule)
+  try
   {
-    out << *s << endl;
+    ofstream out("schedule.txt");
+    if (!out)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    for (const auto &s : schedule)
+    {
+      out << *s << endl;
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }
 
 void FileManager::loadSchedule(vector<unique_ptr<Lesson>> &schedule)
 {
-  ifstream in("schedule.txt");
-
-  Lesson temp;
-
-  while (in >> temp)
+  try
   {
-    schedule.push_back(make_unique<Lesson>(temp));
+    ifstream in("schedule.txt");
+    if (!in)
+    {
+      throw runtime_error("Can not open file.");
+    }
+
+    Lesson temp;
+
+    while (in >> temp)
+    {
+      schedule.push_back(make_unique<Lesson>(temp));
+    }
+  }
+  catch (exception &e)
+  {
+    cout << "Error: " << e.what() << endl;
   }
 }

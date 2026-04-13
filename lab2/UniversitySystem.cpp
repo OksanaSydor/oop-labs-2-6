@@ -14,37 +14,44 @@ void UniversitySystem::launch()
 
   while (true)
   {
-    cout << "\n---------- Menu ----------\n";
-    cout << "1. Log in as administrator\n";
-    cout << "2. User menu\n";
-    cout << "3. Exit\n";
-
-    cin >> choice;
-
-    if (choice == 1)
+    try
     {
-      string password;
-      cout << "Enter password: ";
-      cin >> password;
+      cout << "\n---------- Menu ----------\n";
+      cout << "1. Log in as administrator\n";
+      cout << "2. User menu\n";
+      cout << "3. Exit\n";
 
-      if (password == adminPassword)
+      cin >> choice;
+
+      if (choice == 1)
       {
-        History::addRecord("Admin logged in.", adminHistoryFile);
-        adminMenu();
+        string password;
+        cout << "Enter password: ";
+        cin >> password;
+
+        if (password == adminPassword)
+        {
+          History::addRecord("Admin logged in.", adminHistoryFile);
+          adminMenu();
+        }
+        else
+        {
+          cout << "Wrong password.\n";
+          History::addRecord("Failed admin login.", adminHistoryFile);
+        }
       }
-      else
+      else if (choice == 2)
       {
-        cout << "Wrong password.\n";
-        History::addRecord("Failed admin login.", adminHistoryFile);
+        userMenu();
+      }
+      else if (choice == 3)
+      {
+        break;
       }
     }
-    else if (choice == 2)
+    catch (exception &e)
     {
-      userMenu();
-    }
-    else if (choice == 3)
-    {
-      break;
+      cout << "Error: " << e.what() << endl;
     }
   }
 }
@@ -55,63 +62,78 @@ void UniversitySystem::adminMenu()
 
   while (true)
   {
-    cout << "\n---------- Admin Menu ----------\n";
-    cout << "1. Add student\n";
-    cout << "2. Show information about students\n";
-    cout << "3. Save data\n";
-    cout << "4. View history\n";
-    cout << "0. Back\n";
-
-    cin >> choice;
-
-    if (choice == 1)
+    try
     {
-      string name, faculty;
-      int age;
+      cout << "\n---------- Admin Menu ----------\n";
+      cout << "1. Add student\n";
+      cout << "2. Show information about students\n";
+      cout << "3. Save data\n";
+      cout << "4. View history\n";
+      cout << "0. Back\n";
 
-      cout << "Name: ";
-      cin >> name;
+      cin >> choice;
 
-      cout << "Age: ";
-      cin >> age;
-
-      cout << "Faculty: ";
-      cin >> faculty;
-
-      students.push_back(make_unique<Student>(name, age, faculty));
-
-      cout << "Student added.\n";
-      History::addRecord("Admin added student: " + name, adminHistoryFile);
-    }
-    else if (choice == 2)
-    {
-      for (auto &s : students)
+      if (choice == 1)
       {
-        s->showInfo();
-        cout << endl;
-        History::addRecord("Admin viewed students.", adminHistoryFile);
+        string name, faculty;
+        int age;
+
+        cout << "Name: ";
+        cin >> name;
+        if (name.empty())
+        {
+          throw runtime_error("Invalid data!");
+        }
+
+        cout << "Age: ";
+        cin >> age;
+        if (age < 0)
+        {
+          throw runtime_error("Invalid data!");
+        }
+
+        cout << "Faculty: ";
+        cin >> faculty;
+
+        students.push_back(make_unique<Student>(name, age, faculty));
+
+        cout << "Student added.\n";
+        History::addRecord("Admin added student: " + name, adminHistoryFile);
+      }
+      else if (choice == 2)
+      {
+        for (auto &s : students)
+        {
+          s->showInfo();
+          cout << endl;
+          History::addRecord("Admin viewed students.", adminHistoryFile);
+        }
+      }
+      else if (choice == 3)
+      {
+        FileManager::saveStudents(students);
+        FileManager::saveTeachers(teachers);
+        FileManager::saveCourses(courses);
+        FileManager::saveSchedule(schedule);
+        cout << "Data saved!" << endl;
+      }
+      else if (choice == 4)
+      {
+        vector<string> history = History::loadHistory(adminHistoryFile);
+
+        for (const auto &line : history)
+        {
+          cout << line << endl;
+        }
+      }
+      else if (choice == 0)
+      {
+        break;
       }
     }
-    else if (choice == 3)
+    catch (exception &e)
     {
-      FileManager::saveStudents(students);
-      FileManager::saveTeachers(teachers);
-      FileManager::saveCourses(courses);
-      FileManager::saveSchedule(schedule);
-      cout << "Data saved!" << endl;
-    }
-    else if (choice == 4)
-    {
-      vector<string> history = History::loadHistory(adminHistoryFile);
-
-      for (const auto &line : history)
-      {
-        cout << line << endl;
-      }
-    }
-    else if (choice == 0)
-    {
-      break;
+      cout << "Error: " << e.what() << endl;
     }
   }
 }
