@@ -49,9 +49,19 @@ void Student::SetAge(int age)
   this->age = age;
 }
 
+void Student::SetCourse(const Course &c)
+{
+  course = c;
+}
+
 string Student::GetFaculty() const
 {
   return faculty;
+}
+
+Course Student::GetCourse() const
+{
+  return course;
 }
 
 Student::~Student()
@@ -64,7 +74,7 @@ void Student::showInfo()
   cout << "Name: " << name << endl;
   cout << "Age: " << age << endl;
   cout << "Faculty: " << faculty << endl;
-  cout << "Course info: ";
+  cout << "Course info: \n";
   course.showInfo();
   cout << endl;
 }

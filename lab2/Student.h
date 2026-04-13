@@ -31,7 +31,9 @@ public:
   int GetAge() const override;
   void SetName(string name) override;
   void SetAge(int age) override;
+  void SetCourse(const Course &c);
   string GetFaculty() const;
+  Course GetCourse() const;
 
   void showInfo() override;
   virtual void study() const;

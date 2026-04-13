@@ -1,15 +1,13 @@
 #include "Lesson.h"
 #include <string>
-// #include <sstream>
-// #include <vector>
-// #include <stdexcept>
 
 using namespace std;
 
-Lesson::Lesson(string teacherName, string groupName, string dayOfWeek, string startTime, string room, bool online) : teacherName(teacherName), groupName(groupName), dayOfWeek(dayOfWeek), startTime(startTime), room(room), online(online)
+Lesson::Lesson(string name, string teacherName, string groupName, string dayOfWeek, string startTime, string room, bool online) : name(name), teacherName(teacherName), groupName(groupName), dayOfWeek(dayOfWeek), startTime(startTime), room(room), online(online)
 {
 }
 
+string Lesson::GetName() const { return name; }
 string Lesson::GetTeacherName() const { return teacherName; }
 string Lesson::GetGroupName() const { return groupName; }
 string Lesson::GetDayOfWeek() const { return dayOfWeek; }
@@ -19,6 +17,7 @@ bool Lesson::IsOnline() const { return online; }
 
 void Lesson::showInfo() const
 {
+  cout << "Name: " << name << endl;
   cout << "Teacher: " << teacherName << endl;
   cout << "Group: " << groupName << endl;
   cout << "Day: " << dayOfWeek << endl;
@@ -29,7 +28,8 @@ void Lesson::showInfo() const
 
 ostream &operator<<(ostream &os, const Lesson &lesson)
 {
-  os << lesson.teacherName << " "
+  os << lesson.name << " "
+     << lesson.teacherName << " "
      << lesson.groupName << " "
      << lesson.dayOfWeek << " "
      << lesson.startTime << " "
@@ -41,7 +41,7 @@ ostream &operator<<(ostream &os, const Lesson &lesson)
 
 istream &operator>>(istream &is, Lesson &lesson)
 {
-  is >> lesson.teacherName >> lesson.groupName >> lesson.dayOfWeek >> lesson.startTime >> lesson.room >> lesson.online;
+  is >> lesson.name >> lesson.teacherName >> lesson.groupName >> lesson.dayOfWeek >> lesson.startTime >> lesson.room >> lesson.online;
 
   return is;
 }

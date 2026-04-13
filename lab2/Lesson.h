@@ -8,6 +8,7 @@ using namespace std;
 class Lesson
 {
 private:
+  string name;
   string teacherName;
   string groupName;
   string dayOfWeek;
@@ -16,8 +17,9 @@ private:
   bool online;
 
 public:
-  Lesson(string teacherName = "Unknown", string groupName = "Unknown", string dayOfWeek = "Unknown", string startTime = "00:00", string room = "Unknown", bool online = false);
+  Lesson(string name = "Unknown", string teacherName = "Unknown", string groupName = "Unknown", string dayOfWeek = "Unknown", string startTime = "00:00", string room = "Unknown", bool online = false);
 
+  string GetName() const;
   string GetTeacherName() const;
   string GetGroupName() const;
   string GetDayOfWeek() const;

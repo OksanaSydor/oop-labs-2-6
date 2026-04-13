@@ -9,6 +9,7 @@ class History
 {
 public:
   static void addRecord(const string &info, const string &fileName);
+  static void clearHistory(const string &fileName);
   static vector<string> loadHistory(const string &fileName);
 };
 

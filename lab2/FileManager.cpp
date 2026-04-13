@@ -11,9 +11,15 @@ void FileManager::saveStudents(const vector<unique_ptr<Student>> &students)
     }
     for (const auto &s : students)
     {
+      Course c = s->GetCourse();
+
       out << s->GetName() << " "
           << s->GetAge() << " "
-          << s->GetFaculty() << endl;
+          << s->GetFaculty() << " "
+          << c.GetName() << " "
+          << c.GetCode() << " "
+          << c.GetCredits() << " "
+          << c.GetHours() << endl;
     }
   }
   catch (exception &e)
@@ -32,12 +38,17 @@ void FileManager::loadStudents(vector<unique_ptr<Student>> &students)
       throw runtime_error("Can not open file.");
     }
 
-    string name, faculty;
-    int age;
+    string name, faculty, courseName, code;
+    int age, credits, hours;
 
-    while (in >> name >> age >> faculty)
+    while (in >> name >> age >> faculty >> courseName >> code >> credits >> hours)
     {
-      students.push_back(make_unique<Student>(name, age, faculty));
+      auto student = make_unique<Student>(name, age, faculty);
+
+      Course c(courseName, code, credits, hours);
+      student->SetCourse(c);
+
+      students.push_back(move(student));
     }
   }
   catch (exception &e)
