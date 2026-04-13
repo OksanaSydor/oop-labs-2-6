@@ -8,6 +8,7 @@
 #include "Course.h"
 #include "Lesson.h"
 #include "FileManager.h"
+#include "History.h"
 
 using namespace std;
 
@@ -20,10 +21,13 @@ private:
   vector<unique_ptr<Lesson>> schedule;
 
   const string adminPassword = "8888";
+  
+  const string adminHistoryFile = "admin_history.txt";
+  const string userHistoryFile = "user_history.txt";
 
   void adminMenu();
   void userMenu();
-  
+
 public:
   void launch();
 };

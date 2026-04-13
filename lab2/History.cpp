@@ -6,11 +6,13 @@
 
 using namespace std;
 
-void History::addRecord(const string &action, const string &fileName)
+void History::addRecord(const string &info, const string &fileName)
 {
   ofstream out(fileName, ios::app);
   if (!out)
     return;
+
+  out << info << endl;
 }
 
 vector<string> History::loadHistory(const string &fileName)

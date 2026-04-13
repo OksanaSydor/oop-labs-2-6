@@ -17,7 +17,7 @@ void UniversitySystem::launch()
     cout << "\n---------- Menu ----------\n";
     cout << "1. Log in as administrator\n";
     cout << "2. User menu\n";
-    cout << "3. Save and exit\n";
+    cout << "3. Exit\n";
 
     cin >> choice;
 
@@ -29,11 +29,13 @@ void UniversitySystem::launch()
 
       if (password == adminPassword)
       {
+        History::addRecord("Admin logged in.", adminHistoryFile);
         adminMenu();
       }
       else
       {
         cout << "Wrong password.\n";
+        History::addRecord("Failed admin login.", adminHistoryFile);
       }
     }
     else if (choice == 2)
@@ -42,13 +44,6 @@ void UniversitySystem::launch()
     }
     else if (choice == 3)
     {
-      FileManager::saveStudents(students);
-      FileManager::saveTeachers(teachers);
-      FileManager::saveCourses(courses);
-      FileManager::saveSchedule(schedule);
-
-      cout << "Data saved!" << endl;
-
       break;
     }
   }
@@ -61,10 +56,11 @@ void UniversitySystem::adminMenu()
   while (true)
   {
     cout << "\n---------- Admin Menu ----------\n";
-    cout << "1.Add student\n";
-    cout << "2.Show information about students\n";
-    cout << "3.Save data\n";
-    cout << "0.Back\n";
+    cout << "1. Add student\n";
+    cout << "2. Show information about students\n";
+    cout << "3. Save data\n";
+    cout << "4. View history\n";
+    cout << "0. Back\n";
 
     cin >> choice;
 
@@ -85,6 +81,7 @@ void UniversitySystem::adminMenu()
       students.push_back(make_unique<Student>(name, age, faculty));
 
       cout << "Student added.\n";
+      History::addRecord("Admin added student: " + name, adminHistoryFile);
     }
     else if (choice == 2)
     {
@@ -92,6 +89,7 @@ void UniversitySystem::adminMenu()
       {
         s->showInfo();
         cout << endl;
+        History::addRecord("Admin viewed students.", adminHistoryFile);
       }
     }
     else if (choice == 3)
@@ -101,6 +99,15 @@ void UniversitySystem::adminMenu()
       FileManager::saveCourses(courses);
       FileManager::saveSchedule(schedule);
       cout << "Data saved!" << endl;
+    }
+    else if (choice == 4)
+    {
+      vector<string> history = History::loadHistory(adminHistoryFile);
+
+      for (const auto &line : history)
+      {
+        cout << line << endl;
+      }
     }
     else if (choice == 0)
     {
@@ -119,6 +126,7 @@ void UniversitySystem::userMenu()
     cout << "1. Show information about students\n";
     cout << "2. Show information about courses\n";
     cout << "3. Show schedule\n";
+    cout << "4. View history\n";
     cout << "0. Back\n";
 
     cin >> choice;
@@ -129,6 +137,7 @@ void UniversitySystem::userMenu()
       {
         s->showInfo();
         cout << endl;
+        History::addRecord("User viewed students.", userHistoryFile);
       }
     }
     else if (choice == 2)
@@ -137,6 +146,7 @@ void UniversitySystem::userMenu()
       {
         c->showInfo();
         cout << endl;
+        History::addRecord("User viewed courses.", userHistoryFile);
       }
     }
     else if (choice == 3)
@@ -145,6 +155,16 @@ void UniversitySystem::userMenu()
       {
         s->showInfo();
         cout << endl;
+        History::addRecord("User viewed schedule.", userHistoryFile);
+      }
+    }
+    else if (choice == 4)
+    {
+      vector<string> history = History::loadHistory(userHistoryFile);
+
+      for (const auto &line : history)
+      {
+        cout << line << endl;
       }
     }
     else if (choice == 0)
