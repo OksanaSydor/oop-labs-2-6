@@ -184,11 +184,11 @@ void FileManager::loadSchedule(vector<unique_ptr<Lesson>> &schedule)
       throw runtime_error("Can not open file.");
     }
 
-    Lesson temp;
+    Lesson ls;
 
-    while (in >> temp)
+    while (in >> ls)
     {
-      schedule.push_back(make_unique<Lesson>(temp));
+      schedule.push_back(make_unique<Lesson>(ls));
     }
   }
   catch (exception &e)

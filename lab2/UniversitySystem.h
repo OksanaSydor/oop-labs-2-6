@@ -20,7 +20,7 @@ private:
   vector<unique_ptr<Course>> courses;
   vector<unique_ptr<Lesson>> schedule;
 
-  const string adminPassword = "8888";
+  string adminPassword = "8888";
   
   const string adminHistoryFile = "admin_history.txt";
   const string userHistoryFile = "user_history.txt";

@@ -7,13 +7,40 @@ Lesson::Lesson(string name, string teacherName, string groupName, string dayOfWe
 {
 }
 
-string Lesson::GetName() const { return name; }
-string Lesson::GetTeacherName() const { return teacherName; }
-string Lesson::GetGroupName() const { return groupName; }
-string Lesson::GetDayOfWeek() const { return dayOfWeek; }
-string Lesson::GetStartTime() const { return startTime; }
-string Lesson::GetRoom() const { return room; }
-bool Lesson::IsOnline() const { return online; }
+string Lesson::GetName() const
+{
+  return name;
+}
+
+string Lesson::GetTeacherName() const
+{
+  return teacherName;
+}
+
+string Lesson::GetGroupName() const
+{
+  return groupName;
+}
+
+string Lesson::GetDayOfWeek() const
+{
+  return dayOfWeek;
+}
+
+string Lesson::GetStartTime() const
+{
+  return startTime;
+}
+
+string Lesson::GetRoom() const
+{
+  return room;
+}
+
+bool Lesson::IsOnline() const
+{
+  return online;
+}
 
 void Lesson::showInfo() const
 {
@@ -41,7 +68,13 @@ ostream &operator<<(ostream &os, const Lesson &lesson)
 
 istream &operator>>(istream &is, Lesson &lesson)
 {
-  is >> lesson.name >> lesson.teacherName >> lesson.groupName >> lesson.dayOfWeek >> lesson.startTime >> lesson.room >> lesson.online;
+  is >> lesson.name 
+     >> lesson.teacherName 
+     >> lesson.groupName 
+     >> lesson.dayOfWeek 
+     >> lesson.startTime 
+     >> lesson.room 
+     >> lesson.online;
 
   return is;
 }
